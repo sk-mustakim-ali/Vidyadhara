@@ -1,0 +1,13 @@
+[
+  {
+    "id": "1",
+    "student_id": "student_101",
+    "summary": "Student is improving steadily in Science. Needs to practice Math.",
+    "streaks": 3,
+    "avg_score": 76.5,
+    "weak_subjects": ["Math"],
+    "strong_subjects": ["Science"],
+    "recommended_next": ["Algebra basics"],
+    "generated_at": "2025-09-11T10:10:00"
+  }
+]

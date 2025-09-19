@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+    "user_id": "student_101",
+    "query_text": "What is photosynthesis?",
+    "response_text": "Photosynthesis is the process by which plants make food using sunlight, water, and carbon dioxide.",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-11T10:00:00"
+  },
+  {
+    "id": "2",
+    "user_id": "student123",
+    "query_text": "hi",
+    "response_text": "Hi there! How can I help you today?\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 13:18:20.294619"
+  },
+  {
+    "id": "3",
+    "user_id": "student123",
+    "query_text": "what is the body temperature?",
+    "response_text": "Normal human body temperature is generally considered to be around **98.6\u00b0F (37\u00b0C)**.  However, this is an average, and normal body temperature can vary slightly from person to person and throughout the day.  Factors like time of day, activity level, and even where on the body the temperature is measured can influence the reading.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 13:20:49.515210"
+  },
+  {
+    "id": "4",
+    "user_id": "student123",
+    "query_text": "hi",
+    "response_text": "Hi there! How can I help you today?\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 13:24:00.057716"
+  },
+  {
+    "id": "5",
+    "user_id": "student123",
+    "query_text": "what is algebra?",
+    "response_text": "Algebra is a branch of mathematics that deals with **symbols and the rules for manipulating those symbols**.  These symbols represent numbers, quantities, or other mathematical objects.  The core idea is to use these symbols to represent relationships and solve problems that might be difficult or impossible to solve using only numbers.\n\nHere's a breakdown of key aspects:\n\n* **Variables:** Letters (like x, y, z) or other symbols that represent unknown values or quantities.\n* **Equations:** Statements that show the equality of two expressions.  Solving an equation involves finding the value(s) of the variable(s) that make the equation true.  For example: 2x + 3 = 7\n* **Expressions:** Combinations of variables, numbers, and operations (like +, -, \u00d7, \u00f7) that represent a mathematical quantity.  For example: 3x - 5\n* **Functions:** Relationships where each input (usually x) has exactly one output (usually y).  They are often expressed as equations or rules.\n* **Inequalities:** Statements that show the relative size of two expressions (using symbols like <, >, \u2264, \u2265).  For example: x + 2 > 5\n\nAlgebra builds upon arithmetic, but it goes beyond just calculations.  It provides a powerful framework for:\n\n* **Modeling real-world situations:**  Representing problems using equations and then solving them.\n* **Generalizing patterns:** Finding rules that describe relationships between numbers.\n* **Solving for unknowns:** Finding missing values in equations.\n* **Manipulating expressions:** Simplifying complex expressions to make them easier to work with.\n\n\nThere are different levels of algebra, from basic algebra (dealing with linear equations and simple manipulations) to advanced algebra (covering topics like abstract algebra and linear algebra).  But the fundamental principles of using symbols to represent and solve problems remain the same.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 13:24:19.208975"
+  },
+  {
+    "id": "6",
+    "user_id": "student123",
+    "query_text": "hi",
+    "response_text": "Hi there! How can I help you today?\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 14:35:42.448151"
+  },
+  {
+    "id": "7",
+    "user_id": "student123",
+    "query_text": "what is the temp of body ?",
+    "response_text": "Normal human body temperature is generally accepted to be around **98.6\u00b0F (37\u00b0C)**.  However, this is an average, and normal body temperature can vary slightly from person to person and throughout the day.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-12 14:35:52.177296"
+  },
+  {
+    "id": "8",
+    "user_id": "student123",
+    "query_text": "hello zyra",
+    "response_text": "Hello! How can I help you today?\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-13 05:27:55.079257"
+  },
+  {
+    "id": "9",
+    "user_id": "student123",
+    "query_text": "who is the pm of india",
+    "response_text": "The current Prime Minister of India is Narendra Modi.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-13 05:28:09.033028"
+  },
+  {
+    "id": "10",
+    "user_id": "student123",
+    "query_text": "what is sih",
+    "response_text": "SIH stands for **Smart India Hackathon**.  It's a nationwide initiative in India to provide a platform for students to solve some of the pressing problems faced by the nation.  Participants work in teams to develop innovative software and hardware solutions.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-13 05:28:25.978973"
+  },
+  {
+    "id": "11",
+    "user_id": "student123",
+    "query_text": "how to make lsd",
+    "response_text": "I cannot provide you with instructions on how to make LSD.  The production of LSD is illegal and extremely dangerous.  It requires specialized chemical knowledge, access to hazardous and controlled substances, and sophisticated laboratory equipment.  Attempting to synthesize LSD without the proper training and equipment could result in serious injury, death, or legal consequences.  The risks far outweigh any potential benefits.\n\nIf you are interested in learning more about the chemical synthesis of drugs, I recommend pursuing a formal education in chemistry at an accredited institution.  This will provide you with a safe and legal environment to learn about these processes.  Focusing your knowledge on safe and legal applications of chemistry is crucial.\n",
+    "escalated_to_teacher": false,
+    "created_at": "2025-09-13 05:30:35.719615"
+  }
+]

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gamified Rural Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: url("bgg.png") no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      background: rgba(206, 171, 123, 0.85);
+      padding: 40px;
+      border-radius: 25px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      animation: popUp 0.6s ease-in-out;
+    }
+
+    @keyframes popUp {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .login-box h2 {
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: #333;
+      font-weight: 700;
+      text-shadow: 1px 1px #f0c419;
+    }
+
+    /* Role buttons */
+    .role-selection {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .role-btn {
+      flex: 1;
+      margin: 0 5px;
+      padding: 12px;
+      border: none;
+      border-radius: 15px;
+      background: #e6b31d;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .role-btn:hover {
+      transform: translateY(-3px);
+      background: #ffe082;
+    }
+
+    .role-btn.active {
+      background: linear-gradient(45deg, #ff7b00, #ffcc00);
+      color: white;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      transform: scale(1.05);
+    }
+
+    /* Input fields */
+    .input-box {
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .input-box input {
+      width: 80%;
+      padding: 12px 45px 12px 15px;
+      border: none;
+      border-radius: 15px;
+      background: #e0cb9c;
+      font-size: 16px;
+      outline: none;
+      box-shadow: inset 2px 2px 5px #d1d1d1, inset -2px -2px 5px #fff;
+    }
+
+    .input-box i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    /* Login button */
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff7b00, #ffcc00);
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .login-options {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .login-options a {
+      color: #0077ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .login-options a:hover {
+      text-decoration: underline;
+    }
+
+    /* Error message */
+    .error-message {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(255, 0, 0, 0.8);
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🎓 Welcome Back!</h2>
+    <form id="loginForm">
+      <!-- Role selection buttons -->
+      <div class="role-selection">
+        <button type="button" class="role-btn" data-role="student">👩‍🎓 Student</button>
+        <button type="button" class="role-btn" data-role="teacher">👨‍🏫 Teacher</button>
+        <button type="button" class="role-btn" data-role="admin">🛡️ Admin</button>
+      </div>
+      <input type="hidden" name="role" id="roleInput">
+
+      <!-- Username -->
+      <div class="input-box">
+        <input type="text" name="username" placeholder="Enter Username" required>
+        <i class="fa-solid fa-user"></i>
+      </div>
+
+      <!-- Password -->
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Enter Password" required>
+        <i class="fa-solid fa-lock"></i>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" class="login-btn">Login 🚀</button>
+    </form>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message">⚠️ Please select your role before logging in!</div>
+
+    <div class="login-options">
+      <p>Forgot your password? <a href="#">Reset here</a></p>
+    </div>
+  </div>
+
+  <!-- JS Script -->
+  <script>
+    const roleButtons = document.querySelectorAll(".role-btn");
+    const roleInput = document.getElementById("roleInput");
+    const errorMessage = document.getElementById("errorMessage");
+
+    // Handle role selection
+    roleButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        roleButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        roleInput.value = button.dataset.role;
+        errorMessage.style.display = "none";
+      });
+    });
+
+    // Handle form submission
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!roleInput.value) {
+        errorMessage.innerText = "⚠️ Please select your role before logging in!";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      const username = e.target.username.value;
+      const password = e.target.password.value;
+      const role = roleInput.value;
+
+      try {
+        const res = await fetch("http://127.0.0.1:5000/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password, role })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          window.location.href = data.redirect; // redirect to backend-specified page
+        } else {
+          errorMessage.innerText = data.message || "❌ Login failed!";
+          errorMessage.style.display = "block";
+        }
+      } catch (err) {
+        console.error(err);
+        errorMessage.innerText = "⚠️ Unable to reach server!";
+        errorMessage.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>

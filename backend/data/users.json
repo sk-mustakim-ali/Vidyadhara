@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "email": "student@example.com",
+    "role": "student",
+    "password_hash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+  },
+  {
+    "id": 2,
+    "email": "teacher@example.com",
+    "role": "teacher",
+    "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+  },
+  {
+    "id": 3,
+    "email": "admin@example.com",
+    "role": "admin",
+    "password_hash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f"
+  }
+]

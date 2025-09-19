@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Village Learning - Rural STEM Education</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>🌾 Discover STEM. Master Language. Learn Through Play. 🔭</h1>
+    <p>Gamified lessons to spark curiosity in science, math, tech, and words</p>
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="startLearning()">🎮 Start Learning</button>
+      <!-- Pass event to downloadPacks -->
+      <button class="btn btn-secondary" onclick="downloadPacks(event)">📥 Offline Packs</button>
+    </div>
+  </div>
+
+  <!-- Progress Section -->
+  <div class="progress-section">
+    <div class="user-stats">
+      <div class="stats-item"><span>⭐</span><span id="stars-count">247</span></div>
+      <div class="stats-item"><span>🏅</span><span id="badges-count">8</span></div>
+      <div class="stats-item"><span>📚</span><span>Level 5</span></div>
+    </div>
+    <div class="progress-road"><div class="progress-fill"></div></div>
+    <div style="color:#2e8b57;font-weight:bold">Village Science Fair →</div>
+  </div>
+
+  <!-- Village Scene -->
+  <div class="village-scene">
+    <div class="subject-hub math-hub" onclick="openSubject('math')">
+      <div class="icon">🧮</div><div class="title">Math Village Shop</div>
+    </div>
+    <div class="subject-hub science-hub" onclick="openSubject('science')">
+      <div class="icon">🔬</div><div class="title">Science Farm Hut</div>
+    </div>
+    <div class="subject-hub tech-hub" onclick="openSubject('tech')">
+      <div class="icon">💻</div><div class="title">Tech Community</div>
+    </div>
+    <div class="subject-hub engineering-hub" onclick="openSubject('engineering')">
+      <div class="icon">⚙</div><div class="title">Engineering Workshop</div>
+    </div>
+    <div class="subject-hub language-hub" onclick="openSubject('language')">
+      <div class="icon">📖</div><div class="title">Storytelling Tree</div>
+    </div>
+  </div>
+
+  <!-- Leaderboard -->
+  <div class="leaderboard" style="opacity:0.8">
+    <h2>🏆 Village Fair Champions</h2>
+    <div class="leaderboard-list">
+      <div class="leaderboard-item"><div class="rank">1st</div><div><strong>Priya K.</strong> - Math Farmer 🧮 | 892 ⭐</div></div>
+      <div class="leaderboard-item"><div class="rank">2nd</div><div><strong>Rahul S.</strong> - Science Explorer 🔬 | 756 ⭐</div></div>
+      <div class="leaderboard-item"><div class="rank">3rd</div><div><strong>Anita M.</strong> - Language Storyteller 📖 | 683 ⭐</div></div>
+      <div class="leaderboard-item"><div class="rank">4th</div><div><strong>Vikram T.</strong> - Tech Innovator 💻 | 567 ⭐</div></div>
+    </div>
+  </div>
+
+  <!-- Subject Modal -->
+  <div id="subjectModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title">Subject Hub</h2>
+      <p id="modal-description">Explore exciting activities in this subject!</p>
+      <div class="activity-grid" id="activity-grid"></div>
+      <button class="btn btn-primary" onclick="startActivity()" style="margin-top:1rem">🚀 Start Activity</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-quote">"From stories to science, learning starts in your village."</div>
+    <div style="opacity:0.8">🤝 Partners: Government Schools | Rural Education NGOs | Local Communities</div>
+  </div>
+
+  <!-- Chatbot -->
+  <div id="chatbot-button">💬</div>
+  <div id="chatbot-popup">
+    <div class="chat-header">ZYRA<span id="close-chat">✖</span></div>
+    <div class="chat-body" id="chatBody">
+      <p class="bot">Hello 👋 How can I help you today?</p>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Type a message..." />
+      <button id="sendBtn">➤</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

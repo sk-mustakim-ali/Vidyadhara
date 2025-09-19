@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">VIDYADHARA</span>
+            </div>
+            <button class="close-sidebar" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="teachers">
+                    <i class="fas fa-chalkboard-teacher"></i> Manage Teachers
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="students">
+                    <i class="fas fa-user-graduate"></i> Manage Students
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="maintenance">
+                    <i class="fas fa-tools"></i> System Maintenance
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="analytics">
+                    <i class="fas fa-chart-bar"></i> Platform Analytics
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="gamification">
+                    <i class="fas fa-trophy"></i> Gamification Rules
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="sync">
+                    <i class="fas fa-sync"></i> Sync & Notes
+                </a></li>
+                <li><a href="#" class="nav-link" data-page="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </a></li>
+                <li><a href="#" class="nav-link logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="navbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Admin Dashboard</h1>
+            </div>
+            
+            <div class="navbar-center">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search..." id="searchInput">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                
+                <div class="profile-dropdown">
+                    <div class="profile-trigger" id="profileTrigger">
+                        <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Profile" class="profile-image">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="page-content">
+            <!-- Dashboard Overview -->
+            <div class="page" id="dashboard-page">
+                <div class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon teachers">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Teachers</h3>
+                            <div class="card-number">247</div>
+                            <span class="card-trend positive">+12 this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon students">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Total Students</h3>
+                            <div class="card-number">1,423</div>
+                            <span class="card-trend positive">+85 this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon backups">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Active Backups</h3>
+                            <div class="card-number">12</div>
+                            <span class="card-trend neutral">Last: 2 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon updates">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>System Updates</h3>
+                            <div class="card-number">3</div>
+                            <span class="card-trend warning">Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <h3>Platform Usage</h3>
+                        <canvas id="usageChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>User Activity</h3>
+                        <canvas id="activityChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <div class="card">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>New teacher registered:</strong> Sarah Johnson</p>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>System backup completed</strong></p>
+                                    <span>4 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <p><strong>25 students earned new achievements</strong></p>
+                                    <span>6 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Teachers Page -->
+            <div class="page" id="teachers-page" style="display: none;">
+                <div class="page-header">
+                    <h2>Manage Teachers</h2>
+                    <button class="btn btn-primary" id="addTeacherBtn">
+                        <i class="fas fa-plus"></i> Add Teacher
+                    </button>
+                </div>
+                
+                <div class="card">
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teachersTableBody">
+                                <!-- Teachers data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Students Page -->
+            <div class="page" id="students-page" style="display: none;">
+                <div class="page-header">
+                    <h2>Manage Students</h2>
+                    <button class="btn btn-primary" id="addStudentBtn">
+                        <i class="fas fa-plus"></i> Add Student
+                    </button>
+                </div>
+                
+                <div class="card">
+                    <div class="search-section">
+                        <input type="text" placeholder="Search students..." id="studentSearch">
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Grade</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTableBody">
+                                <!-- Students data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Maintenance Page -->
+            <div class="page" id="maintenance-page" style="display: none;">
+                <h2>System Maintenance</h2>
+                
+                <div class="maintenance-section">
+                    <div class="card">
+                        <h3>Database Backup</h3>
+                        <p>Last backup: 2 hours ago</p>
+                        <div class="status-indicator success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>System Healthy</span>
+                        </div>
+                        <button class="btn btn-primary" id="backupBtn">
+                            <i class="fas fa-database"></i> Backup Now
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>System Updates</h3>
+                        <p>3 updates available</p>
+                        <div class="status-indicator warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Updates Available</span>
+                        </div>
+                        <button class="btn btn-warning" id="updateBtn">
+                            <i class="fas fa-download"></i> Check Updates
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page" id="analytics-page" style="display: none;">
+                <h2>Platform Analytics</h2>
+                
+                <div class="analytics-grid">
+                    <div class="card">
+                        <h3>User Engagement</h3>
+                        <canvas id="engagementChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3>Quiz Performance</h3>
+                        <canvas id="quizChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3>Monthly Growth</h3>
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                    <div class="card">
+                        <h3>Device Usage</h3>
+                        <canvas id="deviceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gamification Rules Page -->
+            <div class="page" id="gamification-page" style="display: none;">
+                <h2>Gamification Rules</h2>
+                
+                <div class="gamification-forms">
+                    <div class="card">
+                        <h3>Token Configuration</h3>
+                        <form id="tokenForm">
+                            <div class="form-group">
+                                <label>Tokens per Quiz Completion</label>
+                                <input type="number" min="1" max="100" value="10">
+                            </div>
+                            <div class="form-group">
+                                <label>Tokens per Challenge Win</label>
+                                <input type="number" min="1" max="100" value="25">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Token Rules</button>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Level System</h3>
+                        <form id="levelForm">
+                            <div class="form-group">
+                                <label>Points for Level 1</label>
+                                <input type="number" min="1" value="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Level Multiplier</label>
+                                <input type="number" min="1" max="5" step="0.1" value="1.5">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Level Rules</button>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Rewards System</h3>
+                        <div class="rewards-list">
+                            <div class="reward-item">
+                                <span>Bronze Badge - 50 points</span>
+                                <button class="btn btn-sm btn-secondary">Edit</button>
+                            </div>
+                            <div class="reward-item">
+                                <span>Silver Badge - 150 points</span>
+                                <button class="btn btn-sm btn-secondary">Edit</button>
+                            </div>
+                            <div class="reward-item">
+                                <span>Gold Badge - 500 points</span>
+                                <button class="btn btn-sm btn-secondary">Edit</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Add New Reward</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sync & Notes Page -->
+            <div class="page" id="sync-page" style="display: none;">
+                <h2>Sync & Notes</h2>
+                
+                <div class="sync-section">
+                    <div class="card">
+                        <h3>Sync Settings</h3>
+                        <div class="sync-controls">
+                            <div class="sync-status">
+                                <div class="status-indicator success">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Online - All synced</span>
+                                </div>
+                            </div>
+                            <div class="sync-options">
+                                <label class="toggle">
+                                    <input type="checkbox" id="autosaveToggle" checked>
+                                    <span class="slider"></span>
+                                    <span class="toggle-label">Auto-save enabled</span>
+                                </label>
+                            </div>
+                            <button class="btn btn-primary" id="forceSyncBtn">
+                                <i class="fas fa-sync"></i> Force Sync
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Admin Notes</h3>
+                        <textarea id="adminNotes" placeholder="Enter your notes here..." rows="10">
+Meeting notes from today:
+- New gamification features to be implemented next month
+- Teacher training session scheduled for Friday
+- Student feedback survey results due next week
+                        </textarea>
+                        <div class="notes-actions">
+                            <button class="btn btn-primary" id="saveNotesBtn">
+                                <i class="fas fa-save"></i> Save Notes
+                            </button>
+                            <span class="autosave-status">Last saved: 2 minutes ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page" id="settings-page" style="display: none;">
+                <h2>Settings</h2>
+                
+                <div class="settings-section">
+                    <div class="card">
+                        <h3>General Settings</h3>
+                        <form>
+                            <div class="form-group">
+                                <label>Platform Name</label>
+                                <input type="text" value="EduAdmin Platform">
+                            </div>
+                            <div class="form-group">
+                                <label>Time Zone</label>
+                                <select>
+                                    <option>UTC-5 (Eastern Time)</option>
+                                    <option>UTC-8 (Pacific Time)</option>
+                                    <option>UTC+0 (GMT)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Settings</button>
+                        </form>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Notification Settings</h3>
+                        <form>
+                            <label class="toggle">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                                <span class="toggle-label">Email notifications</span>
+                            </label>
+                            <label class="toggle">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                                <span class="toggle-label">Push notifications</span>
+                            </label>
+                            <button type="submit" class="btn btn-primary">Save Preferences</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="teacherModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="teacherModalTitle">Add Teacher</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="teacherForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="teacherName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="teacherEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" id="teacherSubject" required>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="teacherStatus">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelTeacherBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="studentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="studentModalTitle">Add Student</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="studentEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Grade</label>
+                    <select id="studentGrade">
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="studentStatus">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelStudentBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

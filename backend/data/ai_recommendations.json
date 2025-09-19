@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1",
+    "student_id": "student_101",
+    "recommendation_type": "lesson",
+    "recommendation_data": {
+      "next": "Fractions for beginners"
+    },
+    "status": "new",
+    "created_at": "2025-09-11T10:15:00"
+  }
+]

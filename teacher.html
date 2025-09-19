@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduAI Teacher – Vanilla</title>
+    <link rel="stylesheet" href="teacher.css" />
+  </head>
+  <body class="overlay" id="appBody">
+    <div class="app" id="app">
+      <aside id="sidebar">
+        <div class="brand">
+          <div class="logo" aria-hidden>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path
+                d="M12 2l3 6 6 .9-4.5 4.4L17.6 20 12 16.9 6.4 20l1.1-6.7L3 8.9 9 8z"
+              />
+            </svg>
+          </div>
+          <strong>VIDYADHARA</strong>
+        </div>
+        <div class="menu">
+          <h4>Menu</h4>
+          <div>
+            <button class="active" data-target="home">
+              <span>🏠</span>Dashboard Home
+            </button>
+            <button data-target="study">
+              <span>📄</span>Create Study Material
+            </button>
+            <button data-target="assignments">
+              <span>📝</span>Post Assignments
+            </button>
+            <button data-target="quizzes"><span>✅</span>Create Quizzes</button>
+            <button data-target="reports">
+              <span>📊</span>Track Student Reports
+              <span class="badge">New</span>
+            </button>
+            <button data-target="challenges">
+              <span>🎮</span>Host Multiplayer Challenges
+            </button>
+            <button data-target="settings"><span>⚙</span>Settings</button>
+          </div>
+        </div>
+        <!-- <div class="side-footer">VIDYADHARA</div> -->
+      </aside>
+
+      <div class="content">
+        <header class="top">
+          <div class="bar">
+            <button
+              class="icon-btn menu-toggle"
+              id="menuToggle"
+              aria-label="Toggle menu"
+            >
+              ☰
+            </button>
+            <div class="spacer"></div>
+            <div style="position: relative">
+              <button class="icon-btn" aria-label="Notifications">🔔</button>
+              <span class="notif-dot">3</span>
+            </div>
+            <div class="user">
+              <div class="info" style="display: none" id="userInfoSm"></div>
+              <div style="text-align: right; display: block">
+                <div style="font-weight: 700">Mrs. A. Sharma</div>
+                <div class="muted" style="font-size: 12px">Physics Teacher</div>
+              </div>
+              <div class="avatar">AS</div>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <section class="section active" id="home">
+            <h1>Welcome back 👋</h1>
+            <p class="muted">
+              Manage your classes, content, and gamified learning experiences.
+            </p>
+
+            <div class="grid stats" style="margin-top: 16px">
+              <div class="card">
+                <div class="hd">
+                  <div class="muted">Active Classes</div>
+                  <div style="font-size: 34px; font-weight: 800">8</div>
+                </div>
+                <div class="divider"></div>
+                <div class="ft muted">This week</div>
+              </div>
+              <div class="card">
+                <div class="hd">
+                  <div class="muted">Pending Reviews</div>
+                  <div style="font-size: 34px; font-weight: 800">12</div>
+                </div>
+                <div class="divider"></div>
+                <div class="ft muted">Assignments</div>
+              </div>
+              <div class="card">
+                <div class="hd">
+                  <div class="muted">Avg. Score</div>
+                  <div style="font-size: 34px; font-weight: 800">78%</div>
+                </div>
+                <div class="divider"></div>
+                <div class="ft muted">Last 30 days</div>
+              </div>
+              <div class="card">
+                <div class="hd">
+                  <div class="muted">Live Challenges</div>
+                  <div style="font-size: 34px; font-weight: 800">2</div>
+                </div>
+                <div class="divider"></div>
+                <div class="ft muted">Ongoing</div>
+              </div>
+            </div>
+
+            <div class="grid split" style="margin-top: 16px">
+              <div class="card">
+                <div class="hd">
+                  <div class="title">Quick Actions</div>
+                  <div class="desc">Jump into common tasks</div>
+                </div>
+                <div
+                  class="bd"
+                  style="
+                    display: grid;
+                    gap: 10px;
+                    grid-template-columns: 1fr 1fr;
+                  "
+                >
+                  <button class="btn primary" data-target="study">
+                    ➕ Create Study Material
+                  </button>
+                  <button class="btn secondary" data-target="assignments">
+                    📅 Post Assignment
+                  </button>
+                  <button class="btn" data-target="quizzes">
+                    ✅ Create Quiz
+                  </button>
+                  <button class="btn ghost" data-target="challenges">
+                    ▶ Host Challenge
+                  </button>
+                </div>
+              </div>
+              <div class="card">
+                <div class="hd">
+                  <div class="title">Class Performance Overview</div>
+                  <div class="desc">Recent trend</div>
+                </div>
+                <div class="bd mini-chart">
+                  <svg
+                    viewBox="0 0 300 160"
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="none"
+                  >
+                    <g stroke="#e5e7eb">
+                      <line x1="0" y1="130" x2="300" y2="130" />
+                      <line x1="0" y1="95" x2="300" y2="95" />
+                      <line x1="0" y1="60" x2="300" y2="60" />
+                    </g>
+                    <path
+                      d="M10 110 L55 108 L100 115 L145 95 L190 100 L235 88 L280 95"
+                      fill="none"
+                      stroke="var(--brand)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="study">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Create Study Material</div>
+                <div class="desc">Upload PDFs, add notes, or embed videos.</div>
+              </div>
+            </div>
+            <div class="grid split" style="margin-top: 12px">
+              <div class="card">
+                <div class="hd">
+                  <div class="title">Upload PDF</div>
+                  <div class="desc">Attach study guides or lecture notes</div>
+                </div>
+                <div class="bd">
+                  <input type="file" id="pdfInput" accept="application/pdf" />
+                  <p
+                    class="muted"
+                    id="pdfSelected"
+                    style="margin-top: 6px; display: none"
+                  ></p>
+                  <div style="margin-top: 8px">
+                    <button class="btn primary">⬆ Upload PDF</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="hd">
+                  <div class="title">Add Text Content</div>
+                  <div class="desc">Write or paste material</div>
+                </div>
+                <div class="bd grid" style="gap: 10px">
+                  <div class="field">
+                    <label for="matTitle">Title</label
+                    ><input
+                      id="matTitle"
+                      placeholder="Electric Fields - Introduction"
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="matBody">Body</label
+                    ><textarea
+                      id="matBody"
+                      placeholder="Explain the concept..."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="ft" style="justify-content: flex-end">
+                  <button class="btn primary">💾 Save Material</button>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-top: 12px">
+              <div class="hd">
+                <div class="title">Embed Video</div>
+                <div class="desc">Link to recorded lectures or references</div>
+              </div>
+              <div
+                class="bd"
+                style="
+                  display: grid;
+                  gap: 10px;
+                  grid-template-columns: 1fr auto;
+                  align-items: end;
+                "
+              >
+                <div class="field" style="margin-right: 10px">
+                  <label for="videoUrl">Video URL</label
+                  ><input
+                    id="videoUrl"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                  />
+                </div>
+                <button class="btn">🎞 Embed</button>
+                <div id="videoFrame" style="grid-column: 1 / -1; display: none">
+                  <div
+                    style="
+                      position: relative;
+                      padding-top: 56.25%;
+                      border: 1px solid var(--border);
+                      border-radius: 12px;
+                      overflow: hidden;
+                    "
+                  >
+                    <iframe
+                      id="iframe"
+                      src=""
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen
+                      style="
+                        position: absolute;
+                        inset: 0;
+                        border: 0;
+                        width: 100%;
+                        height: 100%;
+                      "
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="assignments">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Post Assignments</div>
+                <div class="desc">
+                  Create tasks with due dates and attachments.
+                </div>
+              </div>
+              <div
+                class="bd grid"
+                style="gap: 10px; grid-template-columns: 1fr 1fr"
+              >
+                <div class="field" style="grid-column: 1/-1">
+                  <label for="aTitle">Title</label
+                  ><input id="aTitle" placeholder="Numerical on Kinematics" />
+                </div>
+                <div class="field" style="grid-column: 1/-1">
+                  <label for="aDesc">Description</label
+                  ><textarea
+                    id="aDesc"
+                    placeholder="Describe the assignment..."
+                  ></textarea>
+                </div>
+                <div class="field">
+                  <label for="aDate">Due Date</label
+                  ><input id="aDate" type="date" />
+                </div>
+                <div class="field">
+                  <label for="aTime">Due Time</label
+                  ><input id="aTime" type="time" />
+                </div>
+                <div class="field" style="grid-column: 1/-1">
+                  <label for="aFiles">Attachments</label
+                  ><input id="aFiles" type="file" multiple />
+                </div>
+              </div>
+              <div class="ft" style="justify-content: space-between">
+                <span class="muted" style="font-size: 12px"
+                  >📅 Students will receive a notification upon posting.</span
+                ><button class="btn primary">⬆ Post Assignment</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="quizzes">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Create Quizzes</div>
+                <div class="desc">
+                  Multiple-choice questions with answer keys.
+                </div>
+              </div>
+              <div
+                class="bd"
+                id="quizList"
+                class="grid"
+                style="display: grid; gap: 12px"
+              ></div>
+              <div class="ft" style="justify-content: space-between">
+                <button class="btn" id="addQ">➕ Add Question</button>
+                <button class="btn primary">💾 Save Quiz</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="reports">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Student Reports</div>
+                <div class="desc">Visual overview of performance trends.</div>
+              </div>
+              <div class="bd grid split">
+                <div class="card" style="box-shadow: none">
+                  <div class="hd">
+                    <div class="title">Average Scores</div>
+                    <div class="desc">Weekly trend</div>
+                  </div>
+                  <div class="bd mini-chart">
+                    <svg
+                      viewBox="0 0 300 160"
+                      width="100%"
+                      height="100%"
+                      preserveAspectRatio="none"
+                    >
+                      <g stroke="#e5e7eb">
+                        <line x1="0" y1="130" x2="300" y2="130" />
+                        <line x1="0" y1="95" x2="300" y2="95" />
+                        <line x1="0" y1="60" x2="300" y2="60" />
+                      </g>
+                      <path
+                        d="M10 110 L55 108 L100 115 L145 95 L190 100 L235 88 L280 95"
+                        fill="none"
+                        stroke="var(--brand)"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div class="card" style="box-shadow: none">
+                  <div class="hd">
+                    <div class="title">Proficiency Split</div>
+                    <div class="desc">Across the class</div>
+                  </div>
+                  <div
+                    class="bd"
+                    style="height: 220px; display: grid; place-items: center"
+                  >
+                    <svg viewBox="0 0 200 200" width="180" height="180">
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        fill="none"
+                        stroke="#e5e7eb"
+                        stroke-width="22"
+                      />
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        fill="none"
+                        stroke="var(--brand)"
+                        stroke-width="22"
+                        stroke-dasharray="440"
+                        stroke-dashoffset="300"
+                      />
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="70"
+                        fill="none"
+                        stroke="var(--accent)"
+                        stroke-width="22"
+                        stroke-dasharray="440"
+                        stroke-dashoffset="380"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="challenges">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Host Multiplayer Challenges</div>
+                <div class="desc">
+                  Create a lobby and let students join with a code.
+                </div>
+              </div>
+              <div class="bd grid split">
+                <div class="card" style="box-shadow: none">
+                  <div class="hd">
+                    <div class="title">Challenge Setup</div>
+                    <div class="desc">Configure and share</div>
+                  </div>
+                  <div class="bd grid" style="gap: 10px; max-width: 420px">
+                    <div class="field">
+                      <label for="cname">Name</label
+                      ><input id="cname" value="Friday Physics Sprint" />
+                    </div>
+                    <div class="field">
+                      <label for="difficulty">Difficulty</label>
+                      <select id="difficulty">
+                        <option>Easy</option>
+                        <option selected>Medium</option>
+                        <option>Hard</option>
+                      </select>
+                    </div>
+                    <div class="field">
+                      <label>Invite Code</label>
+                      <div style="display: flex; gap: 8px">
+                        <input id="invite" class="code" readonly /><button
+                          class="btn"
+                          id="copyCode"
+                        >
+                          📋 Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ft" style="justify-content: space-between">
+                    <button class="btn" id="regen">Regenerate Code</button
+                    ><button class="btn primary">▶ Create Lobby</button>
+                  </div>
+                </div>
+                <div class="card" style="box-shadow: none">
+                  <div class="hd">
+                    <div class="title">Lobby</div>
+                    <div class="desc">Waiting room</div>
+                  </div>
+                  <div class="bd">
+                    <div
+                      id="players"
+                      style="
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        margin-bottom: 10px;
+                      "
+                    ></div>
+                    <div style="display: flex; gap: 8px">
+                      <button class="btn" id="addPlayer">
+                        ➕ Add Demo Student</button
+                      ><span class="spacer"></span
+                      ><button class="btn primary">▶ Start Challenge</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="settings">
+            <div class="card">
+              <div class="hd">
+                <div class="title">Settings</div>
+                <div class="desc">Customize your experience.</div>
+              </div>
+              <div class="bd grid" style="gap: 14px; max-width: 680px">
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <div>
+                    <div style="font-weight: 600">Email Notifications</div>
+                    <div class="muted" style="font-size: 12px">
+                      Receive updates on submissions and challenges.
+                    </div>
+                  </div>
+                  <label><input type="checkbox" checked /> </label>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <div>
+                    <div style="font-weight: 600">Dark Mode</div>
+                    <div class="muted" style="font-size: 12px">
+                      Reduce eye strain with a dark theme.
+                    </div>
+                  </div>
+                  <label><input type="checkbox" id="darkToggle" /> </label>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <!-- Chatbot Popup -->
+<div id="chatbot-button">💬</div>
+<div id="chatbot-popup">
+  <div class="chat-header">ZYRA<span id="close-chat">✖</span></div>
+  <div class="chat-body" id="chatBody">
+    <p class="bot">Hello 👋 How can I help you today?</p>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
+
+
+    <script src="teacher.js"></script>
+  </body>
+</html>
